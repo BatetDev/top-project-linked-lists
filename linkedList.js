@@ -1,3 +1,6 @@
+// linkedList.js
+import { Node } from "./node.js";
+
 export class LinkedList {
   constructor() {
     this.head = null;
@@ -33,9 +36,9 @@ export class LinkedList {
   // Returns true if the passed in value is in the list and otherwise returns false
   contains(value) {}
 
-  // returns the index of the node containing value, or null if not found
+  // Returns the index of the node containing value, or null if not found
   find(value) {}
 
-  // represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
-  toString(value) {}
+  // Represents your LinkedList objects as strings
+  toString() {}
 }
