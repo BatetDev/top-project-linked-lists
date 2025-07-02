@@ -1,0 +1,21 @@
+{
+  "name": "top-project-linked-lists",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BatetDev/top-project-linked-lists.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/BatetDev/top-project-linked-lists/issues"
+  },
+  "homepage": "https://github.com/BatetDev/top-project-linked-lists#readme"
+}
