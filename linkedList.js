@@ -22,7 +22,17 @@ export class LinkedList {
   }
 
   // Adds a new node containing value to the START of the list
-  prepend(value) {}
+  prepend(value) {
+    const newNode = new Node(value);
+
+    if (this.head === null) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      newNode.nextNode = current;
+      this.head = newNode;
+    }
+  }
 
   // Inserts a new node with the provided value at the given index
   insertAt(value, index) {}
