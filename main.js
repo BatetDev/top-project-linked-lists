@@ -1,4 +1,5 @@
 // main.js
+import { LinkedList } from "./linkedList.js";
 
 // test cases
 const list = new LinkedList();
@@ -10,4 +11,4 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.toString());
+console.log(list);

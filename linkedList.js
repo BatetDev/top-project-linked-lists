@@ -7,7 +7,19 @@ export class LinkedList {
   }
 
   // Adds a new node containing value to the END of the list
-  append(value) {}
+  append(value) {
+    const newNode = new Node(value);
+
+    if (this.head === null) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.nextNode !== null) {
+        current = current.nextNode;
+      }
+      current.nextNode = newNode;
+    }
+  }
 
   // Adds a new node containing value to the START of the list
   prepend(value) {}
