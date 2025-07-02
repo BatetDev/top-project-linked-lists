@@ -51,6 +51,17 @@ export class LinkedList {
   // Returns the index of the node containing value, or null if not found
   find(value) {}
 
-  // Represents your LinkedList objects as strings
-  toString() {}
+  // Represents the LinkedList objects as strings
+  toString() {
+    let current = this.head;
+    const result = [];
+
+    while (current !== null) {
+      result.push(`( ${current.value} )`);
+      current = current.nextNode;
+    }
+
+    result.push("null");
+    return result.join(" -> ");
+  }
 }
