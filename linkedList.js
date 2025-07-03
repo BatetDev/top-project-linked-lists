@@ -77,7 +77,19 @@ export class LinkedList {
   pop() {}
 
   // Returns true if the passed in value is in the list and otherwise returns false
-  contains(value) {}
+  contains(value) {
+    let current = this._head;
+
+    while (current !== null) {
+      if (current.value === value) {
+        return true;
+      } else {
+        current = current.nextNode;
+      }
+    }
+
+    return false;
+  }
 
   // Returns the index of the node containing value, or null if not found
   find(value) {}

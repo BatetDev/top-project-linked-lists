@@ -28,3 +28,6 @@ console.log(list.size());
 
 console.log("Head: ", list.head);
 console.log("Tail: ", list.tail);
+
+console.log(list.contains("turtle"));
+console.log(list.contains("capybara"));
