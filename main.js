@@ -26,4 +26,5 @@ list.prepend("orangutan");
 console.log(list.toString());
 console.log(list.size());
 
-console.log(list.head);
+console.log("Head: ", list.head);
+console.log("Tail: ", list.tail);

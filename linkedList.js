@@ -4,20 +4,23 @@ import { Node } from "./node.js";
 export class LinkedList {
   constructor() {
     this._head = null;
+    this._tail = null;
   }
 
   // Adds a new node containing value to the END of the list
   append(value) {
     const newNode = new Node(value);
 
-    if (this.head === null) {
+    if (this._head === null) {
       this._head = newNode;
+      this._tail = newNode;
     } else {
       let current = this._head;
       while (current.nextNode !== null) {
         current = current.nextNode;
       }
       current.nextNode = newNode;
+      this._tail = newNode;
     }
   }
 
@@ -27,6 +30,7 @@ export class LinkedList {
 
     if (this._head === null) {
       this._head = newNode;
+      this._tail = newNode;
     } else {
       let current = this._head;
       newNode.nextNode = current;
@@ -62,7 +66,9 @@ export class LinkedList {
   }
 
   // Returns the last node in the list
-  tail() {}
+  get tail() {
+    return this._tail;
+  }
 
   // Returns the node at the given index
   at(index) {}
