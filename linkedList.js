@@ -41,7 +41,20 @@ export class LinkedList {
   removeAt(index) {}
 
   // Returns the total number of nodes in the list
-  size() {}
+  size() {
+    if (this.head === null) {
+      return 0;
+    } else {
+      let current = this.head;
+      let count = 0;
+
+      while (current !== null) {
+        count++;
+        current = current.nextNode;
+      }
+      return count;
+    }
+  }
 
   // Returns the first node in the list
   head() {}
