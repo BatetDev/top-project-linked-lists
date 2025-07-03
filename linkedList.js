@@ -3,7 +3,7 @@ import { Node } from "./node.js";
 
 export class LinkedList {
   constructor() {
-    this.head = null;
+    this._head = null;
   }
 
   // Adds a new node containing value to the END of the list
@@ -11,9 +11,9 @@ export class LinkedList {
     const newNode = new Node(value);
 
     if (this.head === null) {
-      this.head = newNode;
+      this._head = newNode;
     } else {
-      let current = this.head;
+      let current = this._head;
       while (current.nextNode !== null) {
         current = current.nextNode;
       }
@@ -25,12 +25,12 @@ export class LinkedList {
   prepend(value) {
     const newNode = new Node(value);
 
-    if (this.head === null) {
-      this.head = newNode;
+    if (this._head === null) {
+      this._head = newNode;
     } else {
-      let current = this.head;
+      let current = this._head;
       newNode.nextNode = current;
-      this.head = newNode;
+      this._head = newNode;
     }
   }
 
@@ -42,10 +42,10 @@ export class LinkedList {
 
   // Returns the total number of nodes in the list
   size() {
-    if (this.head === null) {
+    if (this._head === null) {
       return 0;
     } else {
-      let current = this.head;
+      let current = this._head;
       let count = 0;
 
       while (current !== null) {
@@ -57,7 +57,9 @@ export class LinkedList {
   }
 
   // Returns the first node in the list
-  head() {}
+  get head() {
+    return this._head;
+  }
 
   // Returns the last node in the list
   tail() {}
