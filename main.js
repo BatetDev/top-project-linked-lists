@@ -34,3 +34,6 @@ console.log(list.contains("capybara"));
 
 console.log(list.find("turtle"));
 console.log(list.find("capybara"));
+
+console.log(list.at(0));
+console.log(list.at(8));
