@@ -31,3 +31,6 @@ console.log("Tail: ", list.tail);
 
 console.log(list.contains("turtle"));
 console.log(list.contains("capybara"));
+
+console.log(list.find("turtle"));
+console.log(list.find("capybara"));
