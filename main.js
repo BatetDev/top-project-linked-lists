@@ -42,3 +42,9 @@ console.log(list.pop());
 console.log(list.toString());
 console.log(list.pop());
 console.log(list.toString());
+
+console.log(list.removeAt(0));
+console.log(list.toString());
+
+console.log(list.removeAt(2));
+console.log(list.toString());

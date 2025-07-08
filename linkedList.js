@@ -42,7 +42,44 @@ export class LinkedList {
   insertAt(value, index) {}
 
   // Removes the node at the given index
-  removeAt(index) {}
+  removeAt(index) {
+    // Edge cases:
+    if (index < 0) return null;
+    if (this._head === null) return null;
+
+    // Special case: Remove first node (no previous node)
+    if (index === 0) {
+      const value = this._head.value;
+      this._head = this._head.nextNode;
+
+      if (this._head === null) {
+        this._tail = null;
+      }
+
+      return value;
+    }
+
+    // General case: Find previous node and node to remove
+    const previousNode = this.at(index - 1);
+
+    // if previousNode is null -> index is out of bounds
+    if (!previousNode || !previousNode.nextNode) {
+      return null;
+    }
+
+    const nodeToRemove = previousNode.nextNode;
+    const value = nodeToRemove.value;
+
+    // Update links
+    previousNode.nextNode = nodeToRemove.nextNode;
+
+    // if removing the last node, update tail
+    if (nodeToRemove.nextNode === null) {
+      this._tail = previousNode;
+    }
+
+    return value;
+  }
 
   // Returns the total number of nodes in the list
   size() {
