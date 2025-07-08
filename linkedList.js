@@ -88,8 +88,34 @@ export class LinkedList {
     return null;
   }
 
-  // Removes the last element from the list
-  pop() {}
+  // Removes the last element from the list and returns it's value
+  pop() {
+    // Edge cases:
+    // Empty list
+    if (this._head === null) return null;
+    // Only one node
+    if (this._head === this._tail) {
+      const value = this._head.value;
+      this._head = null;
+      this._tail = null;
+      return value;
+    }
+
+    let current = this._head;
+
+    // Loop until 2nd-to-last node
+    while (current.nextNode.nextNode !== null) {
+      current = current.nextNode;
+    }
+
+    const value = current.nextNode.value; // Save last node value
+
+    current.nextNode = null; // Disconnect the last node
+
+    this._tail = current; // Update the tail
+
+    return value;
+  }
 
   // Returns true if the passed in value is in the list and otherwise returns false
   contains(value) {

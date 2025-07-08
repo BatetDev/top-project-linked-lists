@@ -20,7 +20,6 @@ console.log(list.toString());
 console.log(list.size());
 
 // prepend
-list.prepend("llama");
 list.prepend("orangutan");
 
 console.log(list.toString());
@@ -37,3 +36,9 @@ console.log(list.find("capybara"));
 
 console.log(list.at(0));
 console.log(list.at(8));
+
+console.log(list.toString());
+console.log(list.pop());
+console.log(list.toString());
+console.log(list.pop());
+console.log(list.toString());
