@@ -7,7 +7,14 @@ export class LinkedList {
     this._tail = null;
   }
 
-  // Adds a new node containing value to the END of the list
+  get head() {
+    return this._head;
+  }
+
+  get tail() {
+    return this._tail;
+  }
+
   append(value) {
     const newNode = new Node(value);
 
@@ -24,7 +31,6 @@ export class LinkedList {
     }
   }
 
-  // Adds a new node containing value to the START of the list
   prepend(value) {
     const newNode = new Node(value);
 
@@ -38,16 +44,36 @@ export class LinkedList {
     }
   }
 
-  // Inserts a new node with the provided value at the given index
-  insertAt(value, index) {}
+  insertAt(value, index) {
+    if (index <= 0) {
+      this.prepend(value);
+      return;
+    }
 
-  // Removes the node at the given index
+    const size = this.size();
+    if (index >= size) {
+      this.append(value);
+      return;
+    }
+
+    const newNode = new Node(value);
+    const previousNode = this.at(index - 1);
+
+    if (previousNode.nextNode === this._tail) {
+      this._tail = newNode;
+    }
+
+    newNode.nextNode = previousNode.nextNode;
+    previousNode.nextNode = newNode;
+  }
+
+  // Removes the node at the given index and returns removed value
   removeAt(index) {
-    // Edge cases:
+    // Edge cases
     if (index < 0) return null;
     if (this._head === null) return null;
 
-    // Special case: Remove first node (no previous node)
+    // Special case: remove first node
     if (index === 0) {
       const value = this._head.value;
       this._head = this._head.nextNode;
@@ -59,10 +85,10 @@ export class LinkedList {
       return value;
     }
 
-    // General case: Find previous node and node to remove
+    // General case: find previous node
     const previousNode = this.at(index - 1);
 
-    // if previousNode is null -> index is out of bounds
+    // If no previous node or nothing to remove, return null
     if (!previousNode || !previousNode.nextNode) {
       return null;
     }
@@ -73,7 +99,7 @@ export class LinkedList {
     // Update links
     previousNode.nextNode = nodeToRemove.nextNode;
 
-    // if removing the last node, update tail
+    // If removing the last node, update tail
     if (nodeToRemove.nextNode === null) {
       this._tail = previousNode;
     }
@@ -81,7 +107,6 @@ export class LinkedList {
     return value;
   }
 
-  // Returns the total number of nodes in the list
   size() {
     if (this._head === null) {
       return 0;
@@ -95,16 +120,6 @@ export class LinkedList {
       }
       return count;
     }
-  }
-
-  // Returns the first node in the list
-  get head() {
-    return this._head;
-  }
-
-  // Returns the last node in the list
-  get tail() {
-    return this._tail;
   }
 
   // Returns the node at the given index
@@ -128,9 +143,7 @@ export class LinkedList {
   // Removes the last element from the list and returns it's value
   pop() {
     // Edge cases:
-    // Empty list
     if (this._head === null) return null;
-    // Only one node
     if (this._head === this._tail) {
       const value = this._head.value;
       this._head = null;
@@ -140,21 +153,20 @@ export class LinkedList {
 
     let current = this._head;
 
-    // Loop until 2nd-to-last node
+    // Traverse to second-to-last node
     while (current.nextNode.nextNode !== null) {
       current = current.nextNode;
     }
 
-    const value = current.nextNode.value; // Save last node value
+    const value = current.nextNode.value;
 
-    current.nextNode = null; // Disconnect the last node
-
-    this._tail = current; // Update the tail
+    // Disconnect last node
+    current.nextNode = null;
+    this._tail = current;
 
     return value;
   }
 
-  // Returns true if the passed in value is in the list and otherwise returns false
   contains(value) {
     let current = this._head;
 
@@ -169,7 +181,6 @@ export class LinkedList {
     return false;
   }
 
-  // Returns the index of the node containing value, or null if not found
   find(value) {
     let current = this._head;
     let index = 0;
@@ -186,7 +197,10 @@ export class LinkedList {
     return null;
   }
 
-  // Represents the LinkedList objects as strings
+  /**
+   * Returns a string representation of the list.
+   * Format: "( value ) -> ( value ) -> null"
+   */
   toString() {
     let current = this.head;
     const result = [];
